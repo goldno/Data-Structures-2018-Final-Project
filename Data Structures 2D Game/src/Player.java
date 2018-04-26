@@ -25,21 +25,13 @@ public class Player {
 	private int maxHealth = 100;
 	private int health = maxHealth;
 	private int lives = 3;
-	private int lostLife=0;
+	private int gems=0;
 	
 	private boolean finishLevel=false;
-	private boolean isFinishedLevel=false;
+	private int levelsFinished=0;
 	private boolean dead = false;
 	
 	private Block[][] p;
-	private Hud h;
-	
-	private int attack=40;
-	private int block=20;
-	private boolean turnEnded;
-	private static boolean attackPressed=false;
-	private static boolean blockPressed=false;
-	private boolean inFight=false;
 	
 	public Player(int width, int height, Block[][] p) throws IOException
 	{
@@ -59,6 +51,9 @@ public class Player {
 	public boolean isDead() {
 		return dead;
 	}
+	public void setDead(boolean d) {
+		dead=d;
+	}
 	public int getLives() {
 		return lives;
 	}
@@ -68,35 +63,26 @@ public class Player {
 	public void setHealth(int h) {
 		health=h;
 	}
-	public boolean isTurnEnded() {
-		return turnEnded;
-	}
-	public int getAttackPower() {
-		return attack;
-	}
-	public static void setAttackPressed(boolean a) {
-		attackPressed=a;
-	}
 	public void stopMovement() {
 		up=down=left=right=false;
 	}
 	public void setMovement(boolean m) {
 		canMove=m;
 	}
-	public boolean getInFight() {
-		return inFight;
+	public int getMaxHealth() {
+		return maxHealth;
+	}
+	public boolean getFinshedLevel() {
+		return finishLevel;
+	}
+	public int getLevelsFinished() {
+		return levelsFinished;
+	}
+	public void setFinishedLevel(boolean f) {
+		finishLevel=f;
 	}
 	
-	public void fight(Enemy e) {
-		if(attackPressed==true) {
-			if(e.isTurnEnded()==true) {
-				e.setHealth(e.getHealth()-attack);
-				attackPressed=false;
-			}
-		}
-	}
-	
-	public void update(Player player,Enemy e)
+	public void update(Player player)
 	{	
 		// get player's last x and y
 		int lastX=x;
@@ -167,13 +153,9 @@ public class Player {
 				}
 				
 			}
-			if(p[i][j].getID() == 3) {
-				if((isDown || isUp || isRight|| isLeft) && p[i][j].intersects(player.getRectangle())) {
-					setMovement(false);
-					x=lastX;
-					y=lastY;
-					fight(e);
-				}
+			if(p[i][j].getID()==4) {
+				levelsFinished+=1;
+				finishLevel=true;
 			}
 //				// powerup 1 giant
 //				if(p[i][j].getID() == 2) 

@@ -33,9 +33,10 @@ public class Block extends Rectangle {
 			g.drawImage(Images.getBlocks()[1], x, y, width, height, null);
 		}
 		if(id == 3) {
-//			e=new Enemy((int)(Math.random()*3+1));
-			Main.e=new Enemy(1);
-			g.drawImage(Images.getBlocks()[1], x, y, width, height, null);
+			g.drawImage(Images.getBlocks()[2], x, y, width, height, null);
+		}
+		if(id == 4) {
+			g.drawImage(Images.getBlocks()[3], x, y, width, height, null);
 		}
 	}
 	

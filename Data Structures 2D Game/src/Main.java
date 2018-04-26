@@ -23,13 +23,12 @@ public class Main extends JPanel {
 	static int x=frame.WIDTH/2;
 	static int y=frame.HEIGHT/2;
 	static Player player;
-	static Enemy e;
 	private Hud h;
 	private Map[] maps = new Map[2];
 	private int currentMap=0;
 	private int nextMap = currentMap+1;
-	static int width=1100; //790
-	static int height=695; //695
+	static int width=780; //790 //1100
+	static int height=695; //695 //695
 	private Font font1 = new Font("Cooper Black", Font.PLAIN, 15);
 
 	public Main() throws IOException {
@@ -92,12 +91,13 @@ public class Main extends JPanel {
 	}
 	
 	private void update() {
-		player.update(player,e);
+		player.update(player);
 		h.update(player);
-//		if(player.isDead()) {
+		if(player.isDead()==true || player.getFinshedLevel()==true) {
 //			gameOver();
-//			currentMap=nextMap;
-//		}
+			currentMap=nextMap;
+			player.setFinishedLevel(false);
+		}
 	}
 
 	@Override

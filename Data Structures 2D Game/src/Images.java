@@ -15,11 +15,15 @@ public class Images
 	
 	public Images() throws IOException
 	{
-		blocks = new BufferedImage[2];
+		blocks = new BufferedImage[4];
 		blocks[0] = ImageIO.read(
-				getClass().getResourceAsStream("grass.jpg"));
+				getClass().getResourceAsStream("grass.png"));
 		blocks[1] = ImageIO.read(
 				getClass().getResourceAsStream("wall.jpg"));
+		blocks[2] = ImageIO.read(
+				getClass().getResourceAsStream("floor.jpg"));
+		blocks[3] = ImageIO.read(
+				getClass().getResourceAsStream("gem.jpg"));
 		
 		
 		
@@ -37,6 +41,8 @@ public class Images
 		hud = new BufferedImage[2];
 		hud[0] =  ImageIO.read(
 				getClass().getResourceAsStream("heart.png"));
+		hud[1] =  ImageIO.read(
+				getClass().getResourceAsStream("gemm.png"));
 //		enemies[1] =  ImageIO.read(
 //				getClass().getResourceAsStream("robot_enemy_left.gif"));
 //		
