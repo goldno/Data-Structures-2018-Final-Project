@@ -81,7 +81,7 @@ public class Main extends JPanel {
 			@Override
 			public void mouseReleased(MouseEvent arg0) {}
 		});
-		
+		System.out.println("I like it");
 	    new Images(); 
 	    maps[0]=new Map("map1");
 	    maps[1]=new Map("map2");
